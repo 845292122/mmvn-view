@@ -8,11 +8,20 @@ overrides:
   jiti: 1.21.0
 
 dependencies:
+  jsencrypt:
+    specifier: ^3.3.2
+    version: 3.3.2
+  lodash:
+    specifier: ^4.17.21
+    version: 4.17.21
   vue:
     specifier: ^3.4.21
     version: 3.4.29(typescript@5.5.2)
 
 devDependencies:
+  '@iconify/vue':
+    specifier: ^4.1.2
+    version: 4.1.2(vue@3.4.29)
   '@unocss/eslint-config':
     specifier: ^0.61.0
     version: 0.61.0(eslint@9.5.0)(typescript@5.5.2)
@@ -705,6 +714,15 @@ packages:
       mlly: 1.7.1
     transitivePeerDependencies:
       - supports-color
+    dev: true
+
+  /@iconify/vue@4.1.2(vue@3.4.29):
+    resolution: {integrity: sha512-CQnYqLiQD5LOAaXhBrmj1mdL2/NCJvwcC4jtW2Z8ukhThiFkLDkutarTOV2trfc9EXqUqRs0KqXOL9pZ/IyysA==, tarball: https://registry.npmmirror.com/@iconify/vue/-/vue-4.1.2.tgz}
+    peerDependencies:
+      vue: '>=3'
+    dependencies:
+      '@iconify/types': 2.0.0
+      vue: 3.4.29(typescript@5.5.2)
     dev: true
 
   /@jridgewell/gen-mapping@0.3.5:
@@ -2068,6 +2086,10 @@ packages:
       argparse: 2.0.1
     dev: true
 
+  /jsencrypt@3.3.2:
+    resolution: {integrity: sha512-arQR1R1ESGdAxY7ZheWr12wCaF2yF47v5qpB76TtV64H1pyGudk9Hvw8Y9tb/FiTIaaTRUyaSnm5T/Y53Ghm/A==, tarball: https://registry.npmmirror.com/jsencrypt/-/jsencrypt-3.3.2.tgz}
+    dev: false
+
   /jsesc@2.5.2:
     resolution: {integrity: sha512-OYu7XEzjkCQ3C5Ps3QIZsQfNpqoJyZZA99wd9aWd05NCtC5pWOkShK2mkL6HXQR6/Cy2lbNdPlZBpuQHXE63gA==, tarball: https://registry.npmmirror.com/jsesc/-/jsesc-2.5.2.tgz}
     engines: {node: '>=4'}
@@ -2139,7 +2161,6 @@ packages:
 
   /lodash@4.17.21:
     resolution: {integrity: sha512-v2kDEe57lecTulaDIuNTPy3Ry4gLGJ6Z1O3vE1krgXZNrsQ+LFTGHVxVjcXPs17LhbZVGedAJv8XZ1tvj5FvSg==, tarball: https://registry.npmmirror.com/lodash/-/lodash-4.17.21.tgz}
-    dev: true
 
   /lru-cache@5.1.1:
     resolution: {integrity: sha512-KpNARQA3Iwv+jTA0utUVVbrh+Jlrr1Fv0e56GGzAFOXN7dk/FviaDW8LHmK52DlcH4WP2n6gI8vN1aesBFgo9w==, tarball: https://registry.npmmirror.com/lru-cache/-/lru-cache-5.1.1.tgz}
