@@ -8,16 +8,25 @@
     "build": "vite build",
     "preview": "vite preview"
   },
+  "comment": "下面的代码锁jiti版本用来解决unocss异常, 参考 https://github.com/unocss/unocss/issues/3869",
+  "pnpm": {
+    "overrides": {
+      "jiti": "1.21.0"
+    }
+  },
   "dependencies": {
     "vue": "^3.4.21"
   },
   "devDependencies": {
+    "@unocss/eslint-config": "^0.61.0",
+    "@unocss/preset-rem-to-px": "^0.61.0",
     "@vitejs/plugin-vue": "^5.0.4",
     "eslint": "^9.5.0",
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-prettier": "^5.1.3",
     "eslint-plugin-vue": "^9.26.0",
     "prettier": "^3.3.2",
+    "unocss": "^0.61.0",
     "vite": "^5.2.0"
   }
 }
