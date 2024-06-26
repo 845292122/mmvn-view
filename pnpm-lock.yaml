@@ -17,6 +17,12 @@ dependencies:
   nprogress:
     specifier: ^0.2.0
     version: 0.2.0
+  pinia:
+    specifier: ^2.1.7
+    version: 2.1.7(typescript@5.5.2)(vue@3.4.29)
+  pinia-plugin-persistedstate:
+    specifier: ^3.2.1
+    version: 3.2.1(pinia@2.1.7)
   vue:
     specifier: ^3.4.21
     version: 3.4.29(typescript@5.5.2)
@@ -2369,6 +2375,32 @@ packages:
     engines: {node: '>=8.6'}
     dev: true
 
+  /pinia-plugin-persistedstate@3.2.1(pinia@2.1.7):
+    resolution: {integrity: sha512-MK++8LRUsGF7r45PjBFES82ISnPzyO6IZx3CH5vyPseFLZCk1g2kgx6l/nW8pEBKxxd4do0P6bJw+mUSZIEZUQ==, tarball: https://registry.npmmirror.com/pinia-plugin-persistedstate/-/pinia-plugin-persistedstate-3.2.1.tgz}
+    peerDependencies:
+      pinia: ^2.0.0
+    dependencies:
+      pinia: 2.1.7(typescript@5.5.2)(vue@3.4.29)
+    dev: false
+
+  /pinia@2.1.7(typescript@5.5.2)(vue@3.4.29):
+    resolution: {integrity: sha512-+C2AHFtcFqjPih0zpYuvof37SFxMQ7OEG2zV9jRI12i9BOy3YQVAHwdKtyyc8pDcDyIc33WCIsZaCFWU7WWxGQ==, tarball: https://registry.npmmirror.com/pinia/-/pinia-2.1.7.tgz}
+    peerDependencies:
+      '@vue/composition-api': ^1.4.0
+      typescript: '>=4.4.4'
+      vue: ^2.6.14 || ^3.3.0
+    peerDependenciesMeta:
+      '@vue/composition-api':
+        optional: true
+      typescript:
+        optional: true
+    dependencies:
+      '@vue/devtools-api': 6.6.3
+      typescript: 5.5.2
+      vue: 3.4.29(typescript@5.5.2)
+      vue-demi: 0.14.8(vue@3.4.29)
+    dev: false
+
   /pkg-types@1.1.1:
     resolution: {integrity: sha512-ko14TjmDuQJ14zsotODv7dBlwxKhUKQEhuhmbqo1uCi9BB0Z2alo/wAXg6q1dTR5TyuqYyWhjtfe/Tsh+X28jQ==, tarball: https://registry.npmmirror.com/pkg-types/-/pkg-types-1.1.1.tgz}
     dependencies:
@@ -2896,6 +2928,21 @@ packages:
     optionalDependencies:
       fsevents: 2.3.3
     dev: true
+
+  /vue-demi@0.14.8(vue@3.4.29):
+    resolution: {integrity: sha512-Uuqnk9YE9SsWeReYqK2alDI5YzciATE0r2SkA6iMAtuXvNTMNACJLJEXNXaEy94ECuBe4Sk6RzRU80kjdbIo1Q==, tarball: https://registry.npmmirror.com/vue-demi/-/vue-demi-0.14.8.tgz}
+    engines: {node: '>=12'}
+    hasBin: true
+    requiresBuild: true
+    peerDependencies:
+      '@vue/composition-api': ^1.0.0-rc.1
+      vue: ^3.0.0-0 || ^2.6.0
+    peerDependenciesMeta:
+      '@vue/composition-api':
+        optional: true
+    dependencies:
+      vue: 3.4.29(typescript@5.5.2)
+    dev: false
 
   /vue-eslint-parser@9.4.3(eslint@9.5.0):
     resolution: {integrity: sha512-2rYRLWlIpaiN8xbPiDyXZXRgLGOtWxERV7ND5fFAv5qo1D2N9Fu9MNajBNc6o13lZ+24DAWCkQCvj4klgmcITg==, tarball: https://registry.npmmirror.com/vue-eslint-parser/-/vue-eslint-parser-9.4.3.tgz}
