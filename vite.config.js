@@ -26,6 +26,13 @@ export default defineConfig(({ mode, command }) => {
       extensions: ['.mjs', '.js', '.ts', '.jsx', '.tsx', '.json', '.vue'],
     },
     plugins: loadPlugins(env, isBuild),
+    css: {
+      preprocessorOptions: {
+        scss: {
+          additionalData: '@use "@/styles/index.scss" as *;',
+        },
+      },
+    },
     server: {
       host: '0.0.0.0',
       port: Number(env.VITE_APP_PORT),
