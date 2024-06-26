@@ -14,9 +14,15 @@ dependencies:
   lodash:
     specifier: ^4.17.21
     version: 4.17.21
+  nprogress:
+    specifier: ^0.2.0
+    version: 0.2.0
   vue:
     specifier: ^3.4.21
     version: 3.4.29(typescript@5.5.2)
+  vue-router:
+    specifier: ^4.4.0
+    version: 4.4.0(vue@3.4.29)
 
 devDependencies:
   '@iconify/vue':
@@ -1299,6 +1305,10 @@ packages:
       '@vue/compiler-dom': 3.4.29
       '@vue/shared': 3.4.29
 
+  /@vue/devtools-api@6.6.3:
+    resolution: {integrity: sha512-0MiMsFma/HqA6g3KLKn+AGpL1kgKhFWszC9U29NfpWK5LE7bjeXxySWJrOJ77hBz+TBrBQ7o4QJqbPbqbs8rJw==, tarball: https://registry.npmmirror.com/@vue/devtools-api/-/devtools-api-6.6.3.tgz}
+    dev: false
+
   /@vue/reactivity@3.4.29:
     resolution: {integrity: sha512-w8+KV+mb1a8ornnGQitnMdLfE0kXmteaxLdccm2XwdFxXst4q/Z7SEboCV5SqJNpZbKFeaRBBJBhW24aJyGINg==, tarball: https://registry.npmmirror.com/@vue/reactivity/-/reactivity-3.4.29.tgz}
     dependencies:
@@ -2266,6 +2276,10 @@ packages:
       path-key: 3.1.1
     dev: true
 
+  /nprogress@0.2.0:
+    resolution: {integrity: sha512-I19aIingLgR1fmhftnbWWO3dXc0hSxqHQHQb3H8m+K3TnEn/iSeTZZOyvKXWqQESMwuUVnatlCnZdLBZZt2VSA==, tarball: https://registry.npmmirror.com/nprogress/-/nprogress-0.2.0.tgz}
+    dev: false
+
   /nth-check@2.1.1:
     resolution: {integrity: sha512-lqjrjmaOoAnWfMmBPL+XNnynZh2+swxiX3WUE0s4yEHI6m+AwrK2UZOimIRl3X/4QctVqS8AiZjFqyOGrMXb/w==, tarball: https://registry.npmmirror.com/nth-check/-/nth-check-2.1.1.tgz}
     dependencies:
@@ -2900,6 +2914,15 @@ packages:
     transitivePeerDependencies:
       - supports-color
     dev: true
+
+  /vue-router@4.4.0(vue@3.4.29):
+    resolution: {integrity: sha512-HB+t2p611aIZraV2aPSRNXf0Z/oLZFrlygJm+sZbdJaW6lcFqEDQwnzUBXn+DApw+/QzDU/I9TeWx9izEjTmsA==, tarball: https://registry.npmmirror.com/vue-router/-/vue-router-4.4.0.tgz}
+    peerDependencies:
+      vue: ^3.2.0
+    dependencies:
+      '@vue/devtools-api': 6.6.3
+      vue: 3.4.29(typescript@5.5.2)
+    dev: false
 
   /vue@3.4.29(typescript@5.5.2):
     resolution: {integrity: sha512-8QUYfRcYzNlYuzKPfge1UWC6nF9ym0lx7mpGVPJYNhddxEf3DD0+kU07NTL0sXuiT2HuJuKr/iEO8WvXvT0RSQ==, tarball: https://registry.npmmirror.com/vue/-/vue-3.4.29.tgz}

@@ -1,30 +1,38 @@
 <script setup>
-import HelloWorld from './components/HelloWorld.vue'
+import { useRoute } from 'vue-router'
+
+const locale = ref('zh-cn')
+const btnConfig = reactive({
+  autoInsertSpace: true,
+})
+const route = useRoute()
+const layouts = new Map()
+
+function getLayout(name) {
+  // 利用map将加载过的layout缓存起来，防止重新加载layout导致页面闪烁
+  if (layouts.get(name)) return layouts.get(name)
+  const layout = markRaw(
+    defineAsyncComponent(() => import(`@/layout/${name}/index.vue`))
+  )
+  layouts.set(name, layout)
+  return layout
+}
+
+const defaultLayout = 'simple'
+const Layout = computed(() => {
+  if (!route.matched?.length) return null
+  return getLayout(route.meta?.layout || defaultLayout)
+})
 </script>
 
 <template>
-  <div>
-    <a href="https://vitejs.dev" target="_blank">
-      <img src="/vite.svg" class="logo" alt="Vite logo" />
-    </a>
-    <a href="https://vuejs.org/" target="_blank">
-      <img src="./assets/vue.svg" class="logo vue" alt="Vue logo" />
-    </a>
-  </div>
-  <HelloWorld msg="Vite + Vue" />
+  <el-config-provider :locale="locale" :button="btnConfig">
+    <router-view v-slot="{ Component, route: curRoute }">
+      <component :is="Layout">
+        <component :is="Component" :key="curRoute.fullPath" />
+      </component>
+    </router-view>
+  </el-config-provider>
 </template>
 
-<style scoped>
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.vue:hover {
-  filter: drop-shadow(0 0 2em #42b883aa);
-}
-</style>
+<style lang="scss" scoped></style>
