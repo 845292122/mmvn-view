@@ -10,6 +10,7 @@ const appStore = useAppStore()
     cursor-pointer
     rounded-2
     p-2
+    ml-2
     text-6
     transition-all-300
     auto-bg-hover
