@@ -1,7 +1,20 @@
-<script setup></script>
+<script setup>
+import Sidebar from './sidebar'
+</script>
 
 <template>
-  <div><slot /></div>
+  <div wh-full flex>
+    <div flex-col flex-shrink-0 transition-width-300 class="aside-wrapper">
+      <Sidebar />
+    </div>
+    <div w-0 flex-col flex-1>
+      <slot />
+    </div>
+  </div>
 </template>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.aside-wrapper {
+  box-shadow: 1px 0 5px 1px rgba(0, 0, 0, 0.3);
+}
+</style>
