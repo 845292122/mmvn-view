@@ -1,22 +1,73 @@
 <script setup>
+import { _localStorage, jscrypt } from '@/utils'
+
+const PHONE_KEY = 'login-phone'
+const PWD_KEY = 'login-pwd'
+const REM_KEY = 'login-rem'
+const EXPIRE_MS = 30 * 24 * 60 * 60 * 1000
+
+const loginRef = ref()
 const title = import.meta.env.VITE_APP_TITLE
 const loginForm = ref({
-  account: '',
+  phone: '',
   password: '',
-  rememberMe: '',
+  rememberMe: true,
 })
 const loading = ref(false)
+const loginRules = {
+  phone: [{ required: true, trigger: 'blur', message: '请输入手机号' }],
+  password: [{ required: true, trigger: 'blur', message: '请输入密码' }],
+}
+
+function handleLogin() {
+  loginRef.value.validate((valid) => {
+    if (valid) {
+      loading.value = true
+      // 记住我
+      if (loginForm.value.rememberMe) {
+        _localStorage.setItem(PHONE_KEY, loginForm.value.phone, EXPIRE_MS)
+        _localStorage.setItem(
+          PWD_KEY,
+          jscrypt.encrypt(loginForm.value.password),
+          EXPIRE_MS
+        )
+        _localStorage.setItem(REM_KEY, loginForm.value.rememberMe, EXPIRE_MS)
+      } else {
+        _localStorage.removeItem(PHONE_KEY)
+        _localStorage.removeItem(PWD_KEY)
+        _localStorage.removeItem(REM_KEY)
+      }
+      // 登录
+    }
+  })
+}
+
+function initLoginInfo() {
+  const loginPhone = _localStorage.getItem(PHONE_KEY)
+  const loginPwd = _localStorage.getItem(PWD_KEY)
+  const loginRem = _localStorage.getItem(REM_KEY)
+  loginForm.value = {
+    phone: loginPhone === null ? loginForm.value.phone : loginPhone,
+    password:
+      loginPwd === null ? loginForm.value.password : jscrypt.decrypt(loginPwd),
+    rememberMe: loginRem === null ? false : Boolean(loginRem),
+  }
+}
+
+;(() => {
+  initLoginInfo()
+})()
 </script>
 
 <template>
   <div flex justify-center items-center h-full>
-    <el-form ref="loginRef" :model="loginForm" w-full p-15>
+    <el-form ref="loginRef" :model="loginForm" :rules="loginRules" w-full p-15>
       <h2 text-center mb-5 text-size-2xl>{{ title }}</h2>
-      <el-form-item prop="account">
+      <el-form-item prop="phone">
         <el-input
-          v-model="loginForm.account"
+          v-model="loginForm.phone"
           autocomplete="off"
-          placeholder="账号"
+          placeholder="手机号"
         >
           <template #prefix>
             <i-bi:person-circle />
@@ -38,7 +89,14 @@ const loading = ref(false)
         <el-checkbox v-model="loginForm.rememberMe">记住密码</el-checkbox>
       </el-tooltip>
       <el-form-item>
-        <el-button w-full type="primary" :loading="loading"> 登 录 </el-button>
+        <el-button
+          w-full
+          type="primary"
+          :loading="loading"
+          @click="handleLogin"
+        >
+          登 录
+        </el-button>
       </el-form-item>
     </el-form>
   </div>

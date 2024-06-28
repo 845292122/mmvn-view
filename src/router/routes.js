@@ -25,3 +25,26 @@ export const staticRoutes = [
     },
   },
 ]
+
+export const dynamicRoutes = [
+  {
+    name: 'system',
+    path: '/system',
+    redirect: '/system/account',
+    requireAdmin: true,
+    meta: {
+      title: '系统管理',
+    },
+    children: [
+      {
+        name: 'system-account',
+        path: '/system/account',
+        component: () => import('@/views/system/account/index.vue'),
+        requireAdmin: true,
+        meta: {
+          title: '账户管理',
+        },
+      },
+    ],
+  },
+]
