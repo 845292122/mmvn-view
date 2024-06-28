@@ -5,7 +5,7 @@ import Components from 'unplugin-vue-components/vite'
 export default () => {
   return Components({
     resolvers: [
-      ElementPlusResolver(),
+      ElementPlusResolver({ importStyle: 'sass' }),
       IconsResolver({
         enabledCollections: ['bi'],
       }),
