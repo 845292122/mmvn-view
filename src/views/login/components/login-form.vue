@@ -1,6 +1,10 @@
 <script setup>
+import { useAuthStore } from '@/store'
 import { _localStorage, jscrypt } from '@/utils'
+import { useRouter } from 'vue-router'
 
+const authStore = useAuthStore()
+const router = useRouter()
 const PHONE_KEY = 'login-phone'
 const PWD_KEY = 'login-pwd'
 const REM_KEY = 'login-rem'
@@ -38,6 +42,15 @@ function handleLogin() {
         _localStorage.removeItem(REM_KEY)
       }
       // 登录
+      authStore
+        .login(loginForm.value)
+        .then(() => {
+          ElMessage.success('登录成功')
+          router.push({ path: '/', replace: true })
+        })
+        .catch(() => {
+          loading.value = false
+        })
     }
   })
 }

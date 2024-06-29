@@ -1,13 +1,16 @@
+import { useAuthStore } from '@/store'
 import axios from 'axios'
 import { ElMessage, ElMessageBox, ElNotification } from 'element-plus'
+import { useRouter } from 'vue-router'
 import { TokenUtil } from './auth'
 
 axios.defaults.headers['Content-Type'] = 'application/json;charset=utf-8'
 
 // 重新登录
 let isRelogin = false
+const authStore = useAuthStore()
+const router = useRouter()
 
-// TODO axios封装完善
 const service = axios.create({
   baseURL: import.meta.env.VITE_APP_BASE_API,
   // timeout: 10000
@@ -35,7 +38,6 @@ service.interceptors.request.use(
  */
 service.interceptors.response.use(
   (resp) => {
-    // TODO 响应处理
     const code = resp.data.code || 200
     const msg = resp.data.msg
     if (
@@ -55,7 +57,8 @@ service.interceptors.response.use(
       })
         .then(() => {
           isRelogin = false
-          // TODO 调用注销函数, 跳转login
+          authStore.logout()
+          router.replace({ path: '/login' })
         })
         .catch(() => (isRelogin = false))
     } else if (code === 403) {

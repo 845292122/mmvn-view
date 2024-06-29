@@ -1,12 +1,55 @@
+import { $AuthApi } from '@/api'
+import { dynamicRoutes } from '@/router/routes'
+import { RouteUtil, TokenUtil } from '@/utils'
+import { cloneDeep } from 'lodash'
 import { defineStore } from 'pinia'
 
-// TODO 认证方法 注销方法 路由权限
 export const useAuthStore = defineStore('authStore', {
   state: () => ({
-    token: '',
+    token: TokenUtil.getToken(),
+    permRoutes: [],
+    info: {},
   }),
-  actions: {},
+  actions: {
+    login(loginInfo) {
+      const { phone, password } = loginInfo
+      return new Promise((resolve, reject) => {
+        $AuthApi
+          .$login({ phone, password })
+          .then((res) => {
+            TokenUtil.setToken(res.data)
+            this.token = res.data
+            resolve()
+          })
+          .catch((error) => {
+            reject(error)
+          })
+      })
+    },
+    getInfo() {
+      return new Promise((resolve, reject) => {
+        $AuthApi
+          .$getInfo()
+          .then((res) => {
+            this.info = res.data
+            const { isAdmin } = res.data
+            const cloneRoutes = cloneDeep(dynamicRoutes)
+            const permRoutes = RouteUtil.filterAuthRoutes(cloneRoutes, isAdmin)
+            this.permRoutes = permRoutes
+            resolve(res)
+          })
+          .catch((error) => {
+            reject(error)
+          })
+      })
+    },
+    logout() {
+      this.token = ''
+      this.routes = []
+      TokenUtil.removeToken()
+    },
+  },
   persist: {
-    storage: sessionStorage,
+    key: 'admin-auth',
   },
 })
