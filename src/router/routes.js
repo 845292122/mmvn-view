@@ -34,6 +34,7 @@ export const dynamicRoutes = [
     requireAdmin: true,
     meta: {
       title: '系统管理',
+      icon: 'bi:gear-fill',
     },
     children: [
       {
@@ -43,6 +44,7 @@ export const dynamicRoutes = [
         requireAdmin: true,
         meta: {
           title: '账户管理',
+          icon: 'bi:person-vcard-fill',
         },
       },
     ],

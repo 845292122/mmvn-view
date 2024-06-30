@@ -39,7 +39,7 @@ export default defineConfig({
   theme: {
     colors: {
       primary: '#0277fc',
-      dark: '#18181c',
+      dark: '#001628',
     },
   },
 })

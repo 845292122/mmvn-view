@@ -9,7 +9,4 @@ export const useAppStore = defineStore('appStore', {
       this.menuCollapsed = !this.menuCollapsed
     },
   },
-  persist: {
-    storage: sessionStorage,
-  },
 })

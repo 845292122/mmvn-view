@@ -8,7 +8,7 @@ export const useAuthStore = defineStore('authStore', {
   state: () => ({
     token: TokenUtil.getToken(),
     permRoutes: [],
-    info: {},
+    info: undefined,
   }),
   actions: {
     login(loginInfo) {
@@ -45,11 +45,9 @@ export const useAuthStore = defineStore('authStore', {
     },
     logout() {
       this.token = ''
-      this.routes = []
+      this.permRoutes = []
+      this.info = undefined
       TokenUtil.removeToken()
     },
-  },
-  persist: {
-    key: 'admin-auth',
   },
 })

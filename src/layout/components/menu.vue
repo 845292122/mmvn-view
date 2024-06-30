@@ -1,9 +1,12 @@
 <script setup>
-import { useAppStore } from '@/store'
+import { useAppStore, useAuthStore } from '@/store'
+import { storeToRefs } from 'pinia'
 import MenuItem from './menu-item'
 
+const authStore = useAuthStore()
 const appStore = useAppStore()
-const menuList = ref([])
+
+const { permRoutes } = storeToRefs(authStore)
 </script>
 
 <template>
@@ -15,7 +18,15 @@ const menuList = ref([])
       :collapse="appStore.menuCollapsed"
       :collapse-transition="false"
     >
-      <MenuItem :menuList="menuList" />
+      <el-menu-item index="/">
+        <el-icon>
+          <i-bi:house-fill />
+        </el-icon>
+        <template #title>
+          <span>首页</span>
+        </template>
+      </el-menu-item>
+      <MenuItem :menuList="permRoutes" />
     </el-menu>
   </el-scrollbar>
 </template>
@@ -40,14 +51,14 @@ $menu-height: 40px;
 :deep(.el-menu) {
   background-color: transparent;
   &.is-active {
-    color: aqua;
+    color: rgb(45, 89, 89);
   }
 }
 
 :deep(.el-sub-menu__title) {
   height: $menu-height;
   margin-bottom: 5px;
-  color: #ffffffb3;
+  color: #000000b3;
   &:hover {
     background-color: #ffffff14;
     border-radius: 5px;
@@ -57,7 +68,7 @@ $menu-height: 40px;
 :deep(.el-menu-item) {
   height: $menu-height;
   margin-bottom: 5px;
-  color: #ffffffb3;
+  color: #000000b3;
   &:hover {
     background-color: #ffffff14;
     border-radius: 5px;

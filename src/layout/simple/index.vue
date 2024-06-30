@@ -1,10 +1,19 @@
 <script setup>
+import { useAppStore } from '@/store'
 import Sidebar from './sidebar'
+
+const appStore = useAppStore()
 </script>
 
 <template>
   <div wh-full flex>
-    <div flex-col flex-shrink-0 transition-width-300 class="aside-wrapper">
+    <div
+      flex-col
+      flex-shrink-0
+      transition-width-300
+      :class="appStore.menuCollapsed ? 'w-16' : 'w-55'"
+      class="aside-wrapper"
+    >
       <Sidebar />
     </div>
     <div w-0 flex-col flex-1>

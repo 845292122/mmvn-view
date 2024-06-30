@@ -1,4 +1,23 @@
-<script setup></script>
+<script setup>
+import { useAuthStore } from '@/store'
+import { useRouter } from 'vue-router'
+
+const authStore = useAuthStore()
+const router = useRouter()
+
+function logout() {
+  ElMessageBox.confirm('确认退出登录?', '提示', {
+    confirmButtonText: '确认',
+    cancelButtonText: '取消',
+    type: 'warning',
+  })
+    .then(() => {
+      authStore.logout()
+      router.push({ path: '/login', replace: true })
+    })
+    .catch(() => {})
+}
+</script>
 
 <template>
   <el-dropdown>
@@ -13,7 +32,7 @@
     </div>
     <template #dropdown>
       <el-dropdown-item>账户资料</el-dropdown-item>
-      <el-dropdown-item divided>退出登录</el-dropdown-item>
+      <el-dropdown-item divided @click="logout">退出登录</el-dropdown-item>
     </template>
   </el-dropdown>
 </template>
