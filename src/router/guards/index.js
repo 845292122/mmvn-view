@@ -1,4 +1,5 @@
 import { createLoadingGuard } from './loading-guard'
+import { createPermissionGuard } from './permission-guard'
 
 /**
  * 路由守卫
@@ -6,4 +7,5 @@ import { createLoadingGuard } from './loading-guard'
  */
 export function setupRouterGuard(router) {
   createLoadingGuard(router)
+  createPermissionGuard(router)
 }

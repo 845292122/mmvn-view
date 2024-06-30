@@ -1,6 +1,5 @@
 import { useAuthStore } from '@/store'
 import axios from 'axios'
-import { ElMessage, ElMessageBox, ElNotification } from 'element-plus'
 import { useRouter } from 'vue-router'
 import { TokenUtil } from './auth'
 
@@ -8,7 +7,6 @@ axios.defaults.headers['Content-Type'] = 'application/json;charset=utf-8'
 
 // 重新登录
 let isRelogin = false
-const authStore = useAuthStore()
 const router = useRouter()
 
 const service = axios.create({
@@ -57,7 +55,7 @@ service.interceptors.response.use(
       })
         .then(() => {
           isRelogin = false
-          authStore.logout()
+          useAuthStore().logout()
           router.replace({ path: '/login' })
         })
         .catch(() => (isRelogin = false))
