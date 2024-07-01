@@ -17,6 +17,10 @@ function logout() {
     })
     .catch(() => {})
 }
+
+function goProfile() {
+  router.push({ path: '/profile' })
+}
 </script>
 
 <template>
@@ -31,7 +35,7 @@ function logout() {
       </div>
     </div>
     <template #dropdown>
-      <el-dropdown-item>账户资料</el-dropdown-item>
+      <el-dropdown-item @click="goProfile">账户资料</el-dropdown-item>
       <el-dropdown-item divided @click="logout">退出登录</el-dropdown-item>
     </template>
   </el-dropdown>
