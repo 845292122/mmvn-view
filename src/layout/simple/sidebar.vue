@@ -9,16 +9,10 @@ const appStore = useAppStore()
 </script>
 
 <template>
-  <Logo class="logo-wrapper" />
+  <Logo border-b="1px solid #e8e8e8" />
   <Menu h-0 flex-1 mt-1 />
   <div my-3 flex items-center justify-around px-3>
     <Profile v-if="!appStore.menuCollapsed" />
     <MenuCollapse />
   </div>
 </template>
-
-<style lang="scss" scoped>
-.logo-wrapper {
-  border-bottom: 1px solid #e8e8e8;
-}
-</style>

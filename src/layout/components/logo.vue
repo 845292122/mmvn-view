@@ -14,7 +14,7 @@ const title = import.meta.env.VITE_APP_TITLE
       ml-2
       max-w-30
       flex-shrink-0
-      text-5
+      text-4
       color-primary
       font-bold
     >
